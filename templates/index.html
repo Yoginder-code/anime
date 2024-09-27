@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <style>
+        /* Style for the background video */
+        .video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1; /* Ensure the video stays behind the content */
+            object-fit: cover; /* Make sure the video covers the entire background */
+        }
+
+        /* Ensure the entire body has transparent background to see the video */
+        body {
+            background-color: transparent;
+            color: white;
+        }
+
+        /* Custom section styling */
+        .anime-cafe-section {
+            background-color: rgba(29, 25, 25, 0.7); /* Apply a semi-transparent background */
+            color: white; /* White text for better contrast */
+        }
+
+        /* Specific row styling */
+        .bg-dark {
+            background-color: rgba(19, 17, 17, 0.7) !important; /* Ensure background color stays black */
+        }
+
+        .container-fluid h1, .container-fluid h3 {
+            color: white; /* White text for better contrast */
+        }
+
+        /* Navbar styling */
+        .navbar {
+            background-color: white; /* White background for navbar */
+        }
+
+        .navbar-nav .nav-link {
+            color: black; /* Black text for nav links */
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: black;
+            color: white;
+        }
+
+        /* Newsletter styling */
+        .newsletter-section {
+            background-color: rgba(29, 25, 25, 0.7);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        /* Chatbot styling */
+        #chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: rgba(29, 29, 29, 0.9);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+        }
+        #chatbot-header {
+            background-color: #202020;
+            padding: 10px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+        #chatbot-messages {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            max-height: 200px;
+        }
+        #chatbot-input {
+            display: flex;
+            padding: 5px;
+        }
+        #chatbot-input input {
+            flex: 1;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        #chatbot-input button {
+            margin-left: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 6px 10px;
+        }
+        .user-message, .bot-message {
+            margin: 5px 0;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .user-message {
+            background-color: #007bff;
+            color: white;
+            align-self: flex-end;
+        }
+        .bot-message {
+            background-color: #343a40;
+            color: white;
+            align-self: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <!-- Add the video background -->
+    <video autoplay loop muted class="video-background">
+        <source src="luffy.mp4" type="video/mp4"> <!-- Change this to the path of your video -->
+        Your browser does not support the video tag.
+    </video>
+
+    <header>
+        <nav class="navbar navbar-expand-lg" style="background-color: #202020;">
+            <div class="container-fluid">
+                <!-- Logo -->
+                <a class="navbar-brand" href="#">
+                    <img src="../images/logo.jpg" alt="Anime Cafe- One Union Piece" width="auto" height="30">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Navigation Links for Responsive Navigation -->
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Options</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="index.html" style="color: #fffafa;">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="gallery.html" style="color: #fffafa;">Gallery</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="menu.html" style="color: #fffafa;">Menu</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="information.html" style="color: #fffafa;">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="reservation.html" style="color: #fffafa;">Reservation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#newsletter" style="color: #fffafa;">Newsletter</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #fffafa;">External Links</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" target="_blank" href="#">Facebook</a></li>
+                                    <li><a class="dropdown-item" target="_blank" href="#">Twitter</a></li>
+                                    <li><a class="dropdown-item" target="_blank" href="#">Instagram</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
+                        <form class="d-flex mt-3" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-info" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="container-fluid mx-auto text-center py-4 anime-cafe-section">
+            <h1>Anime Cafe - One unite piece</h1>
+            <h3 class="lead">Explore the taste along with anime!</h3>
+        </div>
+        
+        <!-- Newsletter Section -->
+        <div class="container-fluid newsletter-section" id="newsletter">
+            <h3 class="text-center">Subscribe to Our Newsletter</h3>
+            <form class="text-center">
+                <input type="email" class="form-control mb-2" placeholder="Enter your email" required>
+                <button type="submit" class="btn btn-outline-info">Subscribe</button>
+            </form>
+        </div>
+
+        <div class="container-fluid mt-5" id="S4">
+            <h3 style="text-align: center;">Anime Stories</h3>
+            <!-- First row: One Piece -->
+            <div class="row p-4 mb-4 bg-dark rounded">
+                <div class="col-md-6">
+                    <img src="../images/one1.jpg" class="img-fluid rounded" alt="One Piece">
+                </div>
+                <div class="col-md-6 text-white"> <!-- Added text-white class -->
+                    <p class="lead">Join Luffy and his friends as they sail the seas in search of treasure and adventure! With its captivating storylines and unforgettable characters, One Piece is a must-watch for anime lovers.</p>
+                </div>
+            </div>
+
+            <!-- Second row: Naruto -->
+            <div class="row p-4 mb-4 bg-dark rounded">
+                <div class="col-md-6 order-md-2">
+                    <img src="../images/naruto_2.jpg" class="img-fluid rounded" alt="Naruto">
+                </div>
+                <div class="col-md-6 text-white"> <!-- Added text-white class -->
+                    <p class="lead">Follow Naruto on his journey to become the strongest ninja in the world! Filled with action, friendship, and determination, Naruto is a story that will inspire you.</p>
+                </div>
+            </div>
+
+            <!-- Third row: Bleach -->
+            <div class="row p-4 mb-4 bg-dark rounded">
+                <div class="col-md-6">
+                    <img src="../images/bleach.jpeg" class="img-fluid rounded" alt="Bleach">
+                </div>
+                <div class="col-md-6 text-white"> <!-- Added text-white class -->
+                    <p class="lead">Dive into the world of Bleach, where Ichigo becomes a Soul Reaper and battles evil spirits! With its intense battles and deep lore, Bleach will keep you on the edge of your seat.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="text-center p-3">
+        <p>&copy; 2024 Anime Cafe. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Chatbot HTML -->
+    <div id="chatbot">
+        <div id="chatbot-header">
+            <strong>Chatbot</strong>
+        </div>
+        <div id="chatbot-messages"></div>
+        <div id="chatbot-input">
+            <input type="text" id="user-input" placeholder="Type your message...">
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+    <script>
+        const messagesDiv = document.getElementById("chatbot-messages");
+        const userInput = document.getElementById("user-input");
+        const sendButton = document.getElementById("send-button");
+    
+        // Function to append message to chat
+        function appendMessage(text, sender) {
+            const messageDiv = document.createElement("div");
+            messageDiv.className = sender === "user" ? "user-message" : "bot-message";
+            messageDiv.textContent = text;
+            messagesDiv.appendChild(messageDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight; // Scroll to the bottom
+        }
+    
+        // Function to create buttons for cuisine options
+        function createButtons(options, callback) {
+            const buttonDiv = document.createElement("div");
+            options.forEach(option => {
+                const button = document.createElement("button");
+                button.textContent = option;
+                button.className = "option-button";
+                button.addEventListener("click", () => {
+                    callback(option);
+                    buttonDiv.remove(); // Remove options after selection
+                });
+                buttonDiv.appendChild(button);
+            });
+            messagesDiv.appendChild(buttonDiv);
+        }
+    
+        // Simulated bot responses based on user input
+        function getBotResponse(userText) {
+            const lowerText = userText.toLowerCase();
+            
+            // Initial greeting and asking about user's well-being
+            if (lowerText.includes("hi") || lowerText.includes("hello") || lowerText.includes("how are you")) {
+                return "Hi! I'm doing well, thank you! What food do you like? Here are some options:";
+            } 
+            // For unrecognized input
+            else {
+                return "That's interesting! Please choose a cuisine from the options I gave earlier.";
+            }
+        }
+    
+        // Function to handle cuisine selection
+        function handleCuisineSelection(cuisine) {
+            let response;
+            switch (cuisine.toLowerCase()) {
+                case 'indian':
+                    response = "Great choice! Here are some Indian dishes:";
+                    createButtons(["Butter Chicken", "Biryani", "Paneer Tikka"], finalizeResponse);
+                    break;
+                case 'chinese':
+                    response = "Awesome! Here are some Chinese dishes:";
+                    createButtons(["Kung Pao Chicken", "Dumplings", "Sweet and Sour Pork"], finalizeResponse);
+                    break;
+                case 'mexican':
+                    response = "Yum! Here are some Mexican dishes:";
+                    createButtons(["Tacos", "Enchiladas", "Quesadillas"], finalizeResponse);
+                    break;
+                case 'korean':
+                    response = "Nice choice! Here are some Korean dishes:";
+                    createButtons(["Bibimbap", "Kimchi", "Korean BBQ"], finalizeResponse);
+                    break;
+                default:
+                    response = "Please choose a valid cuisine: Indian, Chinese, Mexican, or Korean.";
+            }
+            appendMessage(response, "bot");
+        }
+    
+        // Function to finalize the response
+        function finalizeResponse(dish) {
+            appendMessage(`You selected: ${dish}. I hope you like the food!`, "bot");
+        }
+    
+        // Add event listener to send button
+        sendButton.addEventListener("click", () => {
+            const userText = userInput.value;
+            if (userText.trim() !== "") {
+                appendMessage(userText, "user");
+                userInput.value = ""; // Clear input field
+    
+                // Get bot response
+                const botResponse = getBotResponse(userText);
+                setTimeout(() => {
+                    appendMessage(botResponse, "bot");
+    
+                    // If the user has chosen cuisine, show options
+                    if (botResponse.includes("Here are some options:")) {
+                        createButtons(["Indian", "Chinese", "Mexican", "Korean"], handleCuisineSelection);
+                    }
+                }, 1000); // Simulate a delay for bot response
+            }
+        });
+    
+        // Allow pressing Enter to send messages
+        userInput.addEventListener("keypress", (event) => {
+            if (event.key === "Enter") {
+                sendButton.click();
+            }
+        });
+    </script>
+    
+    
+    
+</body>
+</html>

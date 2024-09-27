@@ -1,0 +1,139 @@
+/* General body style */
+
+/* Navbar styles */
+.navbar {
+    background-size: cover; 
+    background-position: center; /* Center the image */
+    border-bottom: 2px solid rgba(255, 87, 34, 0.7); /* Accent border color */
+    position: relative; 
+}
+
+/* Adding a semi-transparent overlay for readability */
+.navbar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Darker black overlay for better contrast */
+    z-index: 0; 
+}
+
+/* Navbar content styling */
+.container-fluid {
+    position: relative; 
+    z-index: 1; /* Ensure navbar content is above the overlay */
+}
+
+/* Navigation links */
+.navbar-nav .nav-link {
+    color: #ffffff !important; /* White text for links */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition on hover */
+    font-size: 1.1em; /* Slightly larger font size */
+}
+.navbar-nav .nav-link:hover {
+    color: #ff5722 !important; /* Accent color on hover */
+    text-decoration: underline; /* Underline on hover for emphasis */
+    transform: scale(1.1); /* Scale up on hover for emphasis */
+}
+
+/* Active link styling */
+.navbar-nav .nav-link.active {
+    font-weight: bold;
+    color: #ff5722 !important; /* Accent color for active link */
+}
+
+/* Offcanvas styles */
+.offcanvas {
+    background-color: #1e1e1e; /* Dark grey for offcanvas */
+    color: #ffffff; /* White text */
+}
+
+/* Dropdown menu styles */
+.dropdown-menu {
+    background-color: #1e1e1e; 
+    border-radius: 8px; /* Rounded corners */
+}
+.dropdown-item {
+    color: #ffffff; 
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+.dropdown-item:hover {
+    background-color: rgba(255, 87, 34, 0.8); /* Accent color on hover */
+}
+
+/* Search button styling */
+.btn-outline-info {
+    color: #ffffff; 
+    border-color: #ff5722; 
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    border-radius: 20px; /* Rounded corners */
+}
+.btn-outline-info:hover {
+    background-color: #ff5722; 
+    color: #ffffff; 
+}
+
+/* Footer styling */
+footer {
+    background-color: rgba(0, 0, 0, 0.8); /* Darker footer */
+    color: white; /* White text */
+    padding: 20px 0; /* Padding for footer */
+}
+footer a {
+    color: #ff5722; /* Accent color for links */
+}
+footer a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Container styling */
+.container-fluid h1, .container-fluid h3 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add text shadow for better visibility */
+}
+/* Chatbot Styles */
+.chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    background-color: rgba(29, 25, 25, 0.9);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000; /* Ensure the chatbot is above other elements */
+    display: none; /* Initially hidden */
+}
+
+.chatbot-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #202020;
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+}
+
+.chatbot-messages {
+    height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+    color: white;
+}
+
+.chatbot-input {
+    display: flex;
+    padding: 10px;
+}
+
+.chatbot-input input {
+    flex: 1;
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+}
+
+.chatbot-input button {
+    margin-left: 5px;
+}
